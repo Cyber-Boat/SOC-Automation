@@ -91,13 +91,15 @@ This replicates a real SOC workflow used in enterprise environments.
 8. MITRE ATT&CK Mapping
 Summary: The adversary activity aligns with Credential Dumping (T1003) and Command Execution (T1059), detected through Sysmon process and image load events analyzed by Wazuh.
 
-9. Screenshots Summary
+#9. Screenshots Summary
 Figure	Description
-Figure 1	Sysmon logs in OpenSearch showing Mimikatz detection
-Figure 2	Wazuh integration with Shuffle SOAR (webhook configuration)
-Figure 3	TheHive backend (Cassandra) validation and permissions
+Figure 1:	Sysmon logs in OpenSearch showing Mimikatz detection
 
-10. Conclusion
+Figure 2:	Wazuh integration with Shuffle SOAR (webhook configuration)
+
+Figure 3;	TheHive backend (Cassandra) validation and permissions
+
+11. Conclusion
 This SOC automation project provides an end-to-end demonstration of:
 	How endpoint telemetry is collected
 	How security alerts are processed
