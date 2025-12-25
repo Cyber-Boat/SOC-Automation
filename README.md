@@ -1,7 +1,7 @@
 # SOC-Automation
 SOC Automation with Wazuh, Shuffle SOAR & TheHive
 
-1. Overview
+## 1. Overview
 This project implements a fully functional Security Operations Center (SOC) automation pipeline using:
 	Wazuh (SIEM & Endpoint Security Platform)
 	Sysmon (Windows Telemetry Source for Advanced Detection)
@@ -9,7 +9,7 @@ This project implements a fully functional Security Operations Center (SOC) auto
 	TheHive (Incident Response & Case Management Platform)
 The objective was to simulate a real adversary technique, credential dumping using Mimikatz and detect it with Sysmon & Wazuh, automate alert enrichment in Shuffle, and generate structured cases in TheHive to support analyst investigations.
 
-2. Architecture
+## 2. Architecture
 Components & Roles
 Component	Purpose
 Windows 10 VM (Wazuh Agent)	Runs Sysmon, generates telemetry, executes Mimikatz simulation
@@ -21,7 +21,7 @@ Git Bash (Windows)	Used to SSH into Wazuh Manager for configuration
 All servers deployed on DigitalOcean Droplets.
 All public IPs have been anonymized: <WAZUH_IP>, <THEHIVE_IP>
 
-3. Attack Simulation: Mimikatz Execution
+## 3. Attack Simulation: Mimikatz Execution
 To generate realistic adversary activity:
 	Sysmon was installed and configured with detection rules for credential dumping.
 	Mimikatz was executed manually via PowerShell on the Windows endpoint.
@@ -35,7 +35,7 @@ Detection Summary:
 	Confirmed Sysmon to Wazuh to OpenSearch pipeline.
 	Telemetry included EventID 7 (ImageLoaded), process command lines and etc
 
-4. Wazuh Manager Configuration
+## 4. Wazuh Manager Configuration
 The Wazuh Manager was accessed using Git Bash on Windows via SSH:
 ssh root@<WAZUH_IP>
 Key configurations:
@@ -49,7 +49,7 @@ Figure 2: Wazuh and Shuffle SOAR Webhook Integration
 This ensures that all qualified alerts are automatically forwarded to Shuffle for automated processing.
 
 
-5. SOAR Workflow: Shuffle Automation
+## 5. SOAR Workflow: Shuffle Automation
 Shuffle was used to automate:
     Receiving alerts from Wazuh
     Extracting key fields
@@ -63,7 +63,7 @@ Workflow includes:
 Submission to TheHive
 
 
-6. TheHive Case Management
+## 6. TheHive Case Management
 TheHive was deployed on Ubuntu 24.04 with Cassandra as the backend database.
 Backend validation steps included:
 	Verifying Cassandra service status
@@ -78,7 +78,7 @@ TheHive receives alerts from Shuffle and generates:
 	Observable lists
 This enables structured investigations for SOC analysts.
 
-7. Event Pipeline Summary
+## 7. Event Pipeline Summary
 Here is the detection-to-response flow:
 	Sysmon detects Mimikatz
 	Wazuh Agent forwards logs
@@ -88,10 +88,10 @@ Here is the detection-to-response flow:
 	TheHive Case is created for analyst investigation
 This replicates a real SOC workflow used in enterprise environments.
 
-8. MITRE ATT&CK Mapping
+## 8. MITRE ATT&CK Mapping
 Summary: The adversary activity aligns with Credential Dumping (T1003) and Command Execution (T1059), detected through Sysmon process and image load events analyzed by Wazuh.
 
-#9. Screenshots Summary
+## 9. Screenshots Summary
 Figure	Description
 Figure 1:	Sysmon logs in OpenSearch showing Mimikatz detection
 
@@ -99,7 +99,7 @@ Figure 2:	Wazuh integration with Shuffle SOAR (webhook configuration)
 
 Figure 3;	TheHive backend (Cassandra) validation and permissions
 
-11. Conclusion
+## 10. Conclusion
 This SOC automation project provides an end-to-end demonstration of:
 	How endpoint telemetry is collected
 	How security alerts are processed
@@ -108,7 +108,7 @@ This SOC automation project provides an end-to-end demonstration of:
 It strengthens practical experience across detection engineering, automation, cloud deployments, and incident response, key areas for modern SOC and security engineer roles.
 
 
-10. Screenshots
+## 11. Screenshots
     
  <img width="556" height="280" alt="image" src="https://github.com/user-attachments/assets/9f905444-46b0-4145-be70-6cb15fcec7e7" />
 
